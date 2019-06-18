@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <mate charset="utf-8">
+    <title>Vue 示例</title>
+  </head>
+  <body>
+    <div id="app">
+      {{prices}}
+    </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        package1: [
+          {
+            name: 'aaa',
+            price: 199,
+            count: 2
+          },
+          {
+            name: 'bbb',
+            price: 299,
+            count: 3
+          }
+        ],
+        package2: [
+          {
+            name: 'ccc',
+            price: 1499,
+            count: 4
+          },
+          {
+            name: 'ddd',
+            price: 1599,
+            count: 5
+          }
+        ]
+      },
+      computed: {
+        prices: function() {
+          let prices = 0;
+          for (let package of this.package1) {
+            prices += package.price * package.count;
+          }
+          return prices;
+        }
+      }
+    })
+  </script>
+  </body>
+  
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <mate charset="utf-8">
+    <title>Vue 示例</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="book in books" >{{book.name}}</li>
+      </ul>
+      <input type="text" v-model="name">{{name}}
+      <span v-html="link"></span>
+      {{date | formatDate}}
+    </div>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="../node_modules/moment/moment.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        books: [
+          {name: '《1》'},
+          {name: '《2》'},
+          {name: '《3》'},
+        ],
+        link: '<a href="#">这是一个连接</a>',
+        date: new Date()
+      },
+      filters: {
+        formatDate: function(value) {
+          return moment(value).format('YYYY-MM-DD HH:mm:ss');
+        }
+      }
+    })
+  </script>
+  </body>
+  
+</html>

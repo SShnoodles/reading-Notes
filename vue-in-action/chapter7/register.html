@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <mate charset="utf-8">
+    <title>Vue 示例</title>
+  </head>
+  <body>
+    <div id="app">
+      <my-component></my-component>
+      <table>
+        <tbody is="my-component"></tbody>
+      </table>
+    </div>
+    <div id="app2">
+      <my-component></my-component>
+    </div>
+    <div id="app3">
+      <my-component-second></my-component-second>
+    </div>
+  <script>
+    // 全局注册
+    Vue.component('my-component', {
+      template: '<div>全局注册</div>'
+    })
+    new Vue({
+      el: '#app'
+    })
+    new Vue({
+      el: '#app2'
+    })
+    // 局部注册
+    new Vue({
+      el: '#app3',
+      components: {
+        'my-component-second': {
+          template: '<div>局部注册</div>'
+        }
+      }
+    })
+  </script>
+  </body>
+  
+</html>
